@@ -40,7 +40,10 @@ test_triple_product: tests/test_triple_product.c $(SRC_VEC)
 test_magnitude: tests/test_magnitude.c $(SRC_VEC)
 	$(CC) $(CFLAGS) tests/test_magnitude.c $(SRC_VEC) -o test_magnitude $(LDFLAGS)
 
-test: test_create test_add test_sub test_dot_product test_cross_product test_equals test_negate test_scale test_reflect test_triple_product test_magnitude
+test_normalize: tests/test_normalize.c $(SRC_VEC)
+	$(CC) $(CFLAGS) tests/test_normalize.c $(SRC_VEC) -o test_normalize $(LDFLAGS)
+
+test: test_create test_add test_sub test_dot_product test_cross_product test_equals test_negate test_scale test_reflect test_triple_product test_magnitude test_normalize
 	@echo "---- Iniciando testes ----"
 	./test_create
 	./test_add
@@ -53,7 +56,8 @@ test: test_create test_add test_sub test_dot_product test_cross_product test_equ
 	./test_reflect
 	./test_triple_product
 	./test_magnitude
+	./test_normalize
 	@echo "---- Testes finalizados ----"
 
 clean:
-	rm -f test_create test_add test_sub test_dot_product test_cross_product test_equals test_negate test_scale test_reflect test_triple_product test_magnitude
+	rm -f test_create test_add test_sub test_dot_product test_cross_product test_equals test_negate test_scale test_reflect test_triple_product test_magnitude test_normalize

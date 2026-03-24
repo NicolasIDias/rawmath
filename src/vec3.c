@@ -79,6 +79,16 @@ float vec3_magnitude(const vec3_t v)
     return sqrtf(p1 + p2 + p3);
 }
 
+void vec3_normalize(vec3_t *v)
+{
+    float magnitude = vec3_magnitude(*v);
+    if(magnitude > VEC3_EPSILON){
+        float inv_magnitude = 1/magnitude;
+        v->x *= inv_magnitude;
+        v->y *= inv_magnitude;
+        v->z *= inv_magnitude;
+    }
+}
 void vec3_print(vec3_t v, const char *txt)
 {
     printf("%s: (%.2f, %.2f, %.2f)\n", txt, v.x, v.y, v.z);
