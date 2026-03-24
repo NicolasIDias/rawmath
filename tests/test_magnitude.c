@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-int main(void) {
+int main() {
     vec3_t v1 = vec3_create(3.0f, 4.0f, 0.0f);
     assert(vec3_magnitude(v1) == 5.0f);
     

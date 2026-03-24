@@ -79,16 +79,32 @@ float vec3_magnitude(const vec3_t v)
     return sqrtf(p1 + p2 + p3);
 }
 
+float vec3_magnitude_sq(vec3_t v)
+{
+    return (v.x * v.x) + (v.y * v.y) + (v.z * v.z);
+}
+
+vec3_t vec3_lerp(vec3_t a, vec3_t b, float t)
+{
+    return vec3_create(
+        a.x + (b.x - a.x) * t,
+        a.y + (b.y - a.y) * t,
+        a.z + (b.z - a.z) * t
+    );
+}
+
 void vec3_normalize(vec3_t *v)
 {
     float magnitude = vec3_magnitude(*v);
-    if(magnitude > VEC3_EPSILON){
-        float inv_magnitude = 1/magnitude;
+    if (magnitude > VEC3_EPSILON)
+    {
+        float inv_magnitude = 1 / magnitude;
         v->x *= inv_magnitude;
         v->y *= inv_magnitude;
         v->z *= inv_magnitude;
     }
 }
+
 void vec3_print(vec3_t v, const char *txt)
 {
     printf("%s: (%.2f, %.2f, %.2f)\n", txt, v.x, v.y, v.z);
