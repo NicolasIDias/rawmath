@@ -24,3 +24,4 @@ void vec3_reflect(vec3_t *r, const vec3_t a, const vec3_t b);
 void vec3_normalize(vec3_t *v);
 vec3_t vec3_lerp(vec3_t a, vec3_t b, float t);
 float vec3_clamp(float val, float min, float max);
+vec3_t vec3_mul(const vec3_t a, const vec3_t b);
