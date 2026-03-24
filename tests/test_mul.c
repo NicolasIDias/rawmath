@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-int main(void) {
+int main() {
     vec3_t a = vec3_create(2.0f, 3.0f, 4.0f);
     vec3_t b = vec3_create(5.0f, 6.0f, 7.0f);
     vec3_t res1 = vec3_mul(a, b);
