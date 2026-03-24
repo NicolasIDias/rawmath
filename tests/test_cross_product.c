@@ -8,7 +8,7 @@ int main()
     vec3_t normal = vec3_create(0.0f, 1.0f, 0.0f);
     vec3_t reflection;
 
-    vec3_reflect(&reflection, &incident, &normal);
+    vec3_reflect(&reflection, incident, normal);
 
     assert(reflection.x == 1.0f);
     assert(reflection.y == 1.0f);

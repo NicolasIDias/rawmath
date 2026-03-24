@@ -17,17 +17,17 @@ vec3_t vec3_sub(vec3_t a, vec3_t b)
     return vec3_create(a.x - b.x, a.y - b.y, a.z - b.z);
 }
 
-float vec3_dot_product(const vec3_t *u, const vec3_t *v)
+float vec3_dot_product(const vec3_t u, const vec3_t v)
 {
-    return (u->x * v->x) + (u->y * v->y) + (u->z * v->z);
+    return (u.x * v.x) + (u.y * v.y) + (u.z * v.z);
 }
 
-vec3_t vec3_cross_product(const vec3_t *a, const vec3_t *b)
+vec3_t vec3_cross_product(const vec3_t a, const vec3_t b)
 {
     vec3_t v;
-    v.x = (a->y * b->z) - (a->z * b->y);
-    v.y = (a->z * b->x) - (a->x * b->z);
-    v.z = (a->x * b->y) - (a->y * b->x);
+    v.x = (a.y * b.z) - (a.z * b.y);
+    v.y = (a.z * b.x) - (a.x * b.z);
+    v.z = (a.x * b.y) - (a.y * b.x);
     return v;
 }
 
@@ -38,12 +38,12 @@ void vec3_scale(float scalar, vec3_t *v)
     v->z *= scalar;
 }
 
-int vec3_equals(vec3_t *a, vec3_t *b)
+int vec3_equals(vec3_t a, vec3_t b)
 {
     return (
-               (fabsf(a->x - b->x) < VEC3_EPSILON) &&
-               (fabsf(a->y - b->y) < VEC3_EPSILON) &&
-               (fabsf(a->z - b->z) < VEC3_EPSILON))
+               (fabsf(a.x - b.x) < VEC3_EPSILON) &&
+               (fabsf(a.y - b.y) < VEC3_EPSILON) &&
+               (fabsf(a.z - b.z) < VEC3_EPSILON))
                ? 1
                : 0;
 }
@@ -55,31 +55,31 @@ void vec3_negate(vec3_t *v)
     v->z *= -1;
 }
 
-void vec3_reflect(vec3_t *r, const vec3_t *a, const vec3_t *b)
+void vec3_reflect(vec3_t *r, const vec3_t a, const vec3_t b)
 {
     float p = 2.f * vec3_dot_product(a, b);
 
-    r->x = a->x - p * b->x;
-    r->y = a->y - p * b->y;
-    r->z = a->z - p * b->z;
+    r->x = a.x - p * b.x;
+    r->y = a.y - p * b.y;
+    r->z = a.z - p * b.z;
 }
 
-float vec3_triple_product(const vec3_t *a, const vec3_t *b, const vec3_t *c)
+float vec3_triple_product(const vec3_t a, const vec3_t b, const vec3_t c)
 {
     vec3_t cross_product = vec3_cross_product(b, c);
-    return vec3_dot_product(a, &cross_product);
+    return vec3_dot_product(a, cross_product);
 }
 
-float vec3_magnitude(const vec3_t *v)
+float vec3_magnitude(const vec3_t v)
 {
-    float p1 = v->x * v->x;
-    float p2 = v->y * v->y;
-    float p3 = v->z * v->z;
+    float p1 = v.x * v.x;
+    float p2 = v.y * v.y;
+    float p3 = v.z * v.z;
 
     return sqrtf(p1 + p2 + p3);
 }
 
-void vec3_print(vec3_t *v, const char *txt)
+void vec3_print(vec3_t v, const char *txt)
 {
-    printf("%s: (%.2f, %.2f, %.2f)\n", txt, v->x, v->y, v->z);
+    printf("%s: (%.2f, %.2f, %.2f)\n", txt, v.x, v.y, v.z);
 }
