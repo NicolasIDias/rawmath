@@ -17,7 +17,7 @@ vec3_t vec3_sub(vec3_t a, vec3_t b)
     return vec3_create(a.x - b.x, a.y - b.y, a.z - b.z);
 }
 
-float vec3_dot_product(vec3_t *u, vec3_t *v)
+float vec3_dot_product(const vec3_t *u, const vec3_t *v)
 {
     return (u->x * v->x) + (u->y * v->y) + (u->z * v->z);
 }
