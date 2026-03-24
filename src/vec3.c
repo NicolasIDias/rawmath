@@ -22,7 +22,7 @@ float vec3_dot_product(const vec3_t *u, const vec3_t *v)
     return (u->x * v->x) + (u->y * v->y) + (u->z * v->z);
 }
 
-vec3_t vec3_cross_product(vec3_t *a, vec3_t *b)
+vec3_t vec3_cross_product(const vec3_t *a, const vec3_t *b)
 {
     vec3_t v;
     v.x = (a->y * b->z) - (a->z * b->y);
