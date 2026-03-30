@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <rawmath/mat4.h>
 #include <rawmath/vec3.h>
 
