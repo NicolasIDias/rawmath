@@ -114,6 +114,18 @@ void mat4_scale(mat4_t *dest, const mat4_t *a, float sx, float sy, float sz) {
     mat4_mul(a, &mat, dest);
 }
 
+void mat4_translate(const mat4_t *a, mat4_t *dest, float tx, float ty, float tz)
+{
+	mat4_t mat = {0};
+	mat4_identity(&mat);
+
+	mat.m[MAT_IDX(0, 3)] = tx;
+	mat.m[MAT_IDX(1, 3)] = ty;
+	mat.m[MAT_IDX(3, 3)] = tz;
+	
+	mat4_mul(a, &mat, dest);
+}
+
 void mat4_print(const mat4_t *mat)
 {
     for (int i = 0; i < 4; i++)
