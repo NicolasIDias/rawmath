@@ -49,7 +49,7 @@ mat4_scale(&model, &model, 2.0f, 2.0f, 2.0f);
 | `mat4_add(a, b, dest)` | Element-wise addition |
 | `mat4_sub(a, b, dest)` | Element-wise subtraction |
 | `mat4_translate(a, dest, tx, ty, tz)` | Matrix translation |
-| `mat4_rotate(a, dest, axis, angle_rad)` | Matrix rotarion |
+| `mat4_rotate(a, dest, axis, angle_rad)` | Matrix rotation |
 
 ## Memory Layout
 
