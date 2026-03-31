@@ -48,6 +48,8 @@ mat4_scale(&model, &model, 2.0f, 2.0f, 2.0f);
 | `mat4_transpose(a, dest)` | Transpose |
 | `mat4_add(a, b, dest)` | Element-wise addition |
 | `mat4_sub(a, b, dest)` | Element-wise subtraction |
+| `mat4_translate(a, dest, tx, ty, tz)` | Matrix translation |
+| `mat4_rotate(a, dest, axis, angle_rad)` | Matrix rotarion |
 
 ## Memory Layout
 
@@ -60,8 +62,6 @@ Matrices are stored in **column-major** order, matching OpenGL convention.
 
 ## Roadmap
 
-- [ ] `mat4_translate`
-- [ ] `mat4_rotate`
 - [ ] `mat4_perspective`
 - [ ] `mat4_lookat`
 - [ ] `vec4` support
