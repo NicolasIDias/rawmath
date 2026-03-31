@@ -141,7 +141,7 @@ void mat4_rotate(const mat4_t *a, mat4_t *dest, vec3_t axis, float angle_rad)
 
     mat4_t mat = {0};
 
-    //Foruma do rodrigues
+    //Formula do rodrigues
     mat.m[MAT_IDX(0, 0)] = t * x * x + c;
     mat.m[MAT_IDX(0, 1)] = t * x * y - s * z;
     mat.m[MAT_IDX(0, 2)] = t * x * z + s * y;
