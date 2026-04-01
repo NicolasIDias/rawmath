@@ -18,5 +18,6 @@ void mat4_transpose(const mat4_t *restrict a, mat4_t *restrict dest);
 void mat4_scale(mat4_t *dest, const mat4_t *a, float sx, float sy, float sz);
 void mat4_translate(const mat4_t *a, mat4_t *dest, float tx, float ty, float tz);
 void mat4_rotate(const mat4_t *a, mat4_t *dest, vec3_t axis, float angle_rad);
+void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, float far);
 
 void mat4_print(const mat4_t *mat);

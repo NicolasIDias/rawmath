@@ -141,7 +141,7 @@ void mat4_rotate(const mat4_t *a, mat4_t *dest, vec3_t axis, float angle_rad)
 
     mat4_t mat = {0};
 
-    //Formula do rodrigues
+    // Formula do rodrigues
     mat.m[MAT_IDX(0, 0)] = t * x * x + c;
     mat.m[MAT_IDX(0, 1)] = t * x * y - s * z;
     mat.m[MAT_IDX(0, 2)] = t * x * z + s * y;
@@ -155,6 +155,29 @@ void mat4_rotate(const mat4_t *a, mat4_t *dest, vec3_t axis, float angle_rad)
     mat.m[MAT_IDX(3, 3)] = 1.0f;
 
     mat4_mul(a, &mat, dest);
+}
+
+void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, float far)
+{
+    float t = tan(fov_y_rad / 2);
+    float top = near * t;
+    float right = top * aspect;
+
+    float far_sub_near = 1 / (far - near);
+
+    float A_x = near / right;
+    float A_y = near / top;
+    float A_z = -(far + near) * far_sub_near;
+    float B_z = -(2 * far * near) * far_sub_near;
+
+    mat4_t mat = {0};
+    mat.m[MAT_IDX(0, 0)] = A_x;
+    mat.m[MAT_IDX(1, 1)] = A_y;
+    mat.m[MAT_IDX(2, 2)] = A_z;
+    mat.m[MAT_IDX(2, 3)] = -1;
+    mat.m[MAT_IDX(3, 2)] = B_z;
+
+    *dest = mat;
 }
 
 void mat4_print(const mat4_t *mat)
