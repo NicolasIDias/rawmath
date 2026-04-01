@@ -10,9 +10,9 @@ typedef struct mat4
 } mat4_t;
 
 void mat4_identity(mat4_t *dest);
-void mat4_mul(const mat4_t *a, const mat4_t *b, mat4_t *dest);
-void mat4_add(const mat4_t *a, const mat4_t *b, mat4_t *dest);
-void mat4_sub(const mat4_t *a, const mat4_t *b, mat4_t *dest);
+void mat4_mul(mat4_t *dest, const mat4_t *a, const mat4_t *b);
+void mat4_add(mat4_t *dest, const mat4_t *a, const mat4_t *b);
+void mat4_sub(mat4_t *dest, const mat4_t *a, const mat4_t *b);
 
 void mat4_transpose(const mat4_t *restrict a, mat4_t *restrict dest);
 void mat4_scale(mat4_t *dest, const mat4_t *a, float sx, float sy, float sz);

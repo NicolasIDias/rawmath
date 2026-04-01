@@ -15,7 +15,7 @@ void mat4_identity(mat4_t *dest)
     *dest = mat;
 }
 
-void mat4_mul(const mat4_t *a, const mat4_t *b, mat4_t *dest)
+void mat4_mul(mat4_t *dest, const mat4_t *a, const mat4_t *b)
 {
     mat4_t temp;
 
@@ -42,7 +42,7 @@ void mat4_mul(const mat4_t *a, const mat4_t *b, mat4_t *dest)
     *dest = temp;
 }
 
-void mat4_add(const mat4_t *a, const mat4_t *b, mat4_t *dest)
+void mat4_add(mat4_t *dest, const mat4_t *a, const mat4_t *b)
 {
     dest->m[MAT_IDX(0, 0)] = a->m[MAT_IDX(0, 0)] + b->m[MAT_IDX(0, 0)];
     dest->m[MAT_IDX(0, 1)] = a->m[MAT_IDX(0, 1)] + b->m[MAT_IDX(0, 1)];
@@ -62,7 +62,7 @@ void mat4_add(const mat4_t *a, const mat4_t *b, mat4_t *dest)
     dest->m[MAT_IDX(3, 3)] = a->m[MAT_IDX(3, 3)] + b->m[MAT_IDX(3, 3)];
 }
 
-void mat4_sub(const mat4_t *a, const mat4_t *b, mat4_t *dest)
+void mat4_sub(mat4_t *dest, const mat4_t *a, const mat4_t *b)
 {
     dest->m[MAT_IDX(0, 0)] = a->m[MAT_IDX(0, 0)] - b->m[MAT_IDX(0, 0)];
     dest->m[MAT_IDX(0, 1)] = a->m[MAT_IDX(0, 1)] - b->m[MAT_IDX(0, 1)];
@@ -112,7 +112,7 @@ void mat4_scale(mat4_t *dest, const mat4_t *a, float sx, float sy, float sz)
     mat.m[MAT_IDX(2, 2)] = sz;
     mat.m[MAT_IDX(3, 3)] = 1.0f;
 
-    mat4_mul(a, &mat, dest);
+    mat4_mul(dest, a, &mat);
 }
 
 void mat4_translate(mat4_t *dest, const mat4_t *a, float tx, float ty, float tz)
@@ -124,7 +124,7 @@ void mat4_translate(mat4_t *dest, const mat4_t *a, float tx, float ty, float tz)
     mat.m[MAT_IDX(1, 3)] = ty;
     mat.m[MAT_IDX(2, 3)] = tz;
 
-    mat4_mul(a, &mat, dest);
+    mat4_mul(dest, a, &mat);
 }
 
 void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)
@@ -153,7 +153,7 @@ void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)
     mat.m[MAT_IDX(2, 1)] = t * y * z + s * x;
     mat.m[MAT_IDX(2, 2)] = t * z * z + c;
 
-    mat4_mul(a, &mat, dest);
+    mat4_mul(dest, a, &mat);
 }
 
 void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, float far)
