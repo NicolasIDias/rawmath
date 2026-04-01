@@ -139,8 +139,9 @@ void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)
     float y = axis.y;
     float z = axis.z;
 
-    mat4_t mat = {0};
+    mat4_t mat;
 
+    mat4_identity(&mat);
     // Formula do rodrigues
     mat.m[MAT_IDX(0, 0)] = t * x * x + c;
     mat.m[MAT_IDX(0, 1)] = t * x * y - s * z;
@@ -150,9 +151,6 @@ void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)
     mat.m[MAT_IDX(1, 2)] = t * y * z - s * x;
     mat.m[MAT_IDX(2, 0)] = t * x * z - s * y;
     mat.m[MAT_IDX(2, 1)] = t * y * z + s * x;
-    mat.m[MAT_IDX(2, 2)] = t * z * z + c;
-
-    mat.m[MAT_IDX(3, 3)] = 1.0f;
 
     mat4_mul(a, &mat, dest);
 }
