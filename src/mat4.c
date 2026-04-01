@@ -115,7 +115,7 @@ void mat4_scale(mat4_t *dest, const mat4_t *a, float sx, float sy, float sz)
     mat4_mul(a, &mat, dest);
 }
 
-void mat4_translate(const mat4_t *a, mat4_t *dest, float tx, float ty, float tz)
+void mat4_translate(mat4_t *dest, const mat4_t *a, float tx, float ty, float tz)
 {
     mat4_t mat = {0};
     mat4_identity(&mat);
@@ -127,7 +127,7 @@ void mat4_translate(const mat4_t *a, mat4_t *dest, float tx, float ty, float tz)
     mat4_mul(a, &mat, dest);
 }
 
-void mat4_rotate(const mat4_t *a, mat4_t *dest, vec3_t axis, float angle_rad)
+void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)
 {
     vec3_normalize(&axis);
 
