@@ -43,13 +43,14 @@ mat4_scale(&model, &model, 2.0f, 2.0f, 2.0f);
 | Function | Description |
 |---|---|
 | `mat4_identity(dest)` | Sets identity matrix |
-| `mat4_mul(a, b, dest)` | Matrix multiplication |
+| `mat4_mul(dest, a, b)` | Matrix multiplication |
 | `mat4_scale(dest, a, sx, sy, sz)` | Scale transformation |
-| `mat4_transpose(a, dest)` | Transpose |
-| `mat4_add(a, b, dest)` | Element-wise addition |
-| `mat4_sub(a, b, dest)` | Element-wise subtraction |
-| `mat4_translate(a, dest, tx, ty, tz)` | Matrix translation |
-| `mat4_rotate(a, dest, axis, angle_rad)` | Matrix rotation |
+| `mat4_transpose(dest, a)` | Transpose |
+| `mat4_add(dest, a, b)` | Element-wise addition |
+| `mat4_sub(dest, a, b)` | Element-wise subtraction |
+| `mat4_translate(dest, a, tx, ty, tz)` | Matrix translation |
+| `mat4_rotate(dest, a, axis, angle_rad)` | Matrix rotation |
+| `mat4_perspective(dest, fov_y_rad, aspect, near, far)` | Builds perspective projection |
 
 ## Memory Layout
 
@@ -62,7 +63,6 @@ Matrices are stored in **column-major** order, matching OpenGL convention.
 
 ## Roadmap
 
-- [ ] `mat4_perspective`
 - [ ] `mat4_lookat`
 - [ ] `vec4` support
 
