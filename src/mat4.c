@@ -173,8 +173,8 @@ void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, f
     mat.m[MAT_IDX(0, 0)] = A_x;
     mat.m[MAT_IDX(1, 1)] = A_y;
     mat.m[MAT_IDX(2, 2)] = A_z;
-    mat.m[MAT_IDX(2, 3)] = -1;
-    mat.m[MAT_IDX(3, 2)] = B_z;
+    mat.m[MAT_IDX(2, 3)] = B_z;
+    mat.m[MAT_IDX(3, 2)] = -1.0f;
 
     *dest = mat;
 }
