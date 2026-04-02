@@ -4,5 +4,4 @@
 *.exe
 *.out
 *.app
-vec2.h
 vec2.c
