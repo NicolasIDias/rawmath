@@ -24,6 +24,27 @@ mat4_scale(&model, &model, 2.0f, 2.0f, 2.0f);
 
 ## API
 
+### vec2
+
+| Function | Description |
+|---|---|
+| `vec2_create(x, y)` | Creates a new vec2 |
+| `vec2_from_scalar(s)` | Creates a vec2 with both components equal to `s` |
+| `vec2_add(a, b)` | Returns a + b |
+| `vec2_sub(a, b)` | Returns a - b |
+| `vec2_mul(a, b)` | Component-wise multiplication |
+| `vec2_dot_product(a, b)` | Dot product |
+| `vec2_magnitude(v)` | Returns the length |
+| `vec2_magnitude_sq(v)` | Returns squared length |
+| `vec2_normalize(v)` | Normalizes in-place |
+| `vec2_scale(v, s)` | Scales by scalar `s` |
+| `vec2_reflect(r, a, n)` | Reflection (n must be normalized) |
+| `vec2_lerp(a, b, t)` | Linear interpolation |
+| `vec2_clamp_float(v, min, max)` | Clamps each component between `min` and `max` |
+| `vec2_equals(a, b)` | Compares vectors within epsilon |
+| `vec2_negate(v)` | Negates the vector |
+| `vec2_print(txt, v)` | Prints vector values |
+
 ### vec3
 
 | Function | Description |
@@ -64,7 +85,6 @@ Matrices are stored in **column-major** order, matching OpenGL convention.
 
 ## Roadmap
 
-- [ ] `vec2` support
 - [ ] `vec4` support
 - [ ] quaternion utilities
 - [ ] `mat3` support
