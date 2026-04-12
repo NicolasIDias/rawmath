@@ -158,7 +158,7 @@ void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)
 
 void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, float far)
 {
-    float t = tan(fov_y_rad / 2);
+    float t = tanf(fov_y_rad / 2);
     float top = near * t;
     float right = top * aspect;
 
@@ -212,7 +212,7 @@ void mat4_print(const mat4_t *mat)
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
-            printf("%8.2f", mat->m[MAT_IDX(i, j)]);
+            printf("%8.2f", (double) mat->m[MAT_IDX(i, j)]);
         printf("\n");
     }
     printf("\n");
