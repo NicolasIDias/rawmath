@@ -65,7 +65,7 @@ int vec2_equals(vec2_t a, vec2_t b)
                : 0;
 }
 
-void vec3_print(vec2_t v, const char *txt)
+void vec2_print(vec2_t v, const char *txt)
 {
     printf("%s: (%.2f, %.2f)\n", txt, (double)v.x, (double)v.y);
 }
