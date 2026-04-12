@@ -125,5 +125,5 @@ float vec3_clamp(float val, float min, float max)
 
 void vec3_print(vec3_t v, const char *txt)
 {
-    printf("%s: (%.2f, %.2f, %.2f)\n", txt, v.x, v.y, v.z);
+    printf("%s: (%.2f, %.2f, %.2f)\n", txt, (double)v.x, (double)v.y, (double)v.z);
 }
