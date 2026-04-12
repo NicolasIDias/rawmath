@@ -28,3 +28,8 @@ float vec2_magnitude(vec2_t a);
 float vec2_magnitude_sq(vec2_t a);
 int vec2_equals(vec2_t a, vec2_t b);
 void vec2_print(vec2_t v, const char *txt);
+void vec2_scale(float scalar, vec2_t *v);
+void vec2_negate(vec2_t *v);
+void vec2_reflect(vec2_t *r, const vec2_t a, const vec2_t b);
+void vec2_normalize(vec2_t *v);
+vec2_t vec2_lerp(vec2_t a, vec2_t b, float t);

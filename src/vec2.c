@@ -65,6 +65,44 @@ int vec2_equals(vec2_t a, vec2_t b)
                : 0;
 }
 
+void vec2_negate(vec2_t *v)
+{
+    v->x *= -1;
+    v->y *= -1;
+}
+
+void vec2_reflect(vec2_t *r, const vec2_t a, const vec2_t b)
+{
+    float p = 2.f * vec2_dot_product(a, b);
+
+    r->x = a.x - p * b.x;
+    r->y = a.y - p * b.y;
+}
+
+vec2_t vec2_lerp(vec2_t a, vec2_t b, float t)
+{
+    return vec2_create(
+        a.x + (b.x - a.x) * t,
+        a.y + (b.y - a.y) * t);
+}
+
+void vec2_normalize(vec2_t *v)
+{
+    float magnitude = vec2_magnitude(*v);
+    if (magnitude > VEC2_EPSILON)
+    {
+        float inv_magnitude = 1 / magnitude;
+        v->x *= inv_magnitude;
+        v->y *= inv_magnitude;
+    }
+}
+
+void vec2_scale(float scalar, vec2_t *v)
+{
+    v->x *= scalar;
+    v->y *= scalar;
+}
+
 void vec2_print(vec2_t v, const char *txt)
 {
     printf("%s: (%.2f, %.2f)\n", txt, (double)v.x, (double)v.y);
