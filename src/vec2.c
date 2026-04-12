@@ -33,3 +33,28 @@ float vec2_clamp_float(float val, float min, float max)
     }
     return val;
 }
+
+vec2_t vec2_mul(vec2_t a, vec2_t b)
+{
+    return vec2_create(a.x *b.x, a.y *b.y);
+}
+
+float vec2_dot_product(vec2_t a,vec2_t b)
+{
+    return (a.x * b.x) * (a.y * b.y);
+}
+
+float vec2_magnitude(vec2_t a)
+{
+    return sqrtf((a.x*a.x) + (a.y * a.y));
+}
+
+float vec2_magnitude_sq(vec2_t a)
+{
+    return (a.x*a.x) + (a.y * a.y);
+}
+
+void vec3_print(vec2_t v, const char *txt)
+{
+    printf("%s: (%.2f, %.2f, %.2f)\n", txt, (double)v.x, (double)v.y);
+}

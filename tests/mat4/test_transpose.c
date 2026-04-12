@@ -3,21 +3,21 @@
 #include <assert.h>
 #include <math.h>
 
-int main()
+int main(void)
 {
     mat4_t mat, result;
 
     mat4_identity(&mat);
     mat4_transpose(&result, &mat);
 
-    assert(result.m[MAT_IDX(0, 0)] == 1.0f);
-    assert(result.m[MAT_IDX(1, 1)] == 1.0f);
-    assert(result.m[MAT_IDX(2, 2)] == 1.0f);
-    assert(result.m[MAT_IDX(3, 3)] == 1.0f);
+    assert(fabsf(result.m[MAT_IDX(0, 0)] - 1.0f) < 1e-6f);
+    assert(fabsf(result.m[MAT_IDX(1, 1)] - 1.0f) < 1e-6f);
+    assert(fabsf(result.m[MAT_IDX(2, 2)] - 1.0f) < 1e-6f);
+    assert(fabsf(result.m[MAT_IDX(3, 3)] - 1.0f) < 1e-6f);
 
     for (int i = 0; i < 16; i++)
     {
-        mat.m[i] = i + 1;
+        mat.m[i] = (float)(i + 1);
     }
 
     mat4_transpose(&mat, &result);
@@ -26,7 +26,7 @@ int main()
     {
         for (int j = 0; j < 4; j++)
         {
-            assert(result.m[MAT_IDX(i, j)] == mat.m[MAT_IDX(j, i)]);
+            assert(fabsf(result.m[MAT_IDX(i, j)] - mat.m[MAT_IDX(j, i)]) < 1e-6f);
         }
     }
 

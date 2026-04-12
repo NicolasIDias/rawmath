@@ -4,12 +4,12 @@
 #include <math.h>
 
 #ifndef M_PI
-#define M_PI 3.14159265358979323846
+#define M_PI 3.14159265358979323846f
 #endif
 
 #define EPSILON 1e-5f
 
-int main()
+int main(void)
 {
     mat4_t mat, result;
     vec3_t axis;

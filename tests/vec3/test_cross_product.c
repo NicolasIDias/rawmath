@@ -1,8 +1,9 @@
 #include <rawmath/vec3.h>
 #include <stdio.h>
 #include <assert.h>
+#include <math.h>
 
-int main()
+int main(void)
 {
     vec3_t incident = vec3_create(1.0f, -1.0f, 0.0f);
     vec3_t normal = vec3_create(0.0f, 1.0f, 0.0f);
@@ -10,9 +11,9 @@ int main()
 
     vec3_reflect(&reflection, incident, normal);
 
-    assert(reflection.x == 1.0f);
-    assert(reflection.y == 1.0f);
-    assert(reflection.z == 0.0f);
+    assert(fabsf(reflection.x - 1.0f) < VEC3_EPSILON);
+    assert(fabsf(reflection.y - 1.0f) < VEC3_EPSILON);
+    assert(fabsf(reflection.z - 0.0f) < VEC3_EPSILON);
 
     printf("reflect_test passed!\n");
     return 0;

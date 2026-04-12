@@ -8,7 +8,7 @@
 #define EPSILON 1e-5f
 #endif
 
-int main()
+int main(void)
 {
     mat4_t result;
     vec3_t eye, center, up;

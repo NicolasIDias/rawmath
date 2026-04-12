@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <math.h>
 
-int main()
+int main(void)
 {
     mat4_t mat, result;
 
@@ -17,10 +17,10 @@ int main()
     mat4_identity(&mat);
     mat4_translate(&result, &mat, 0.0f, 0.0f, 0.0f);
 
-    assert(result.m[MAT_IDX(0, 0)] == 1.0f);
-    assert(result.m[MAT_IDX(1, 1)] == 1.0f);
-    assert(result.m[MAT_IDX(2, 2)] == 1.0f);
-    assert(result.m[MAT_IDX(3, 3)] == 1.0f);
+    assert(fabsf(result.m[MAT_IDX(0, 0)] - 1.0f) < 1e-6f);
+    assert(fabsf(result.m[MAT_IDX(1, 1)] - 1.0f) < 1e-6f);
+    assert(fabsf(result.m[MAT_IDX(2, 2)] - 1.0f) < 1e-6f);
+    assert(fabsf(result.m[MAT_IDX(3, 3)] - 1.0f) < 1e-6f);
 
     mat4_identity(&mat);
     mat4_translate(&result, &mat, -2.0f, -3.0f, -4.0f);

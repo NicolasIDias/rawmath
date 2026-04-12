@@ -1,8 +1,9 @@
 #include <rawmath/mat4.h>
 #include <stdio.h>
 #include <assert.h>
+#include <math.h>
 
-int main()
+int main(void)
 {
     mat4_t a, b, result;
 
@@ -16,7 +17,7 @@ int main()
 
     for (int i = 0; i < 16; i++)
     {
-        assert(result.m[i] == 3.0f);
+        assert(fabsf(result.m[i] - 3.0f) < 1e-6f);
     }
 
     mat4_identity(&a);
@@ -27,10 +28,10 @@ int main()
 
     mat4_sub(&result, &a, &b);
 
-    assert(result.m[MAT_IDX(0, 0)] == 1.0f);
-    assert(result.m[MAT_IDX(1, 1)] == 1.0f);
-    assert(result.m[MAT_IDX(2, 2)] == 1.0f);
-    assert(result.m[MAT_IDX(3, 3)] == 1.0f);
+    assert(fabsf(result.m[MAT_IDX(0, 0)] - 1.0f) < 1e-6f);
+    assert(fabsf(result.m[MAT_IDX(1, 1)] - 1.0f) < 1e-6f);
+    assert(fabsf(result.m[MAT_IDX(2, 2)] - 1.0f) < 1e-6f);
+    assert(fabsf(result.m[MAT_IDX(3, 3)] - 1.0f) < 1e-6f);
 
     for (int i = 0; i < 16; i++)
     {
@@ -42,7 +43,7 @@ int main()
 
     for (int i = 0; i < 16; i++)
     {
-        assert(result.m[i] == -2.0f);
+        assert(fabsf(result.m[i] - -2.0f) < 1e-6f);
     }
 
     printf("sub_test passed!\n");
