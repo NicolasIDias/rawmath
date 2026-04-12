@@ -39,3 +39,8 @@ test: $(SRC_OBJS)
 
 clean:
 	rm -f $(TESTS) $(TEST_OBJS) $(SRC_OBJS)
+
+compile:
+	$(CC) $(CFLAGS) -c src/vec2.c -o /tmp/vec2.o
+	$(CC) $(CFLAGS) -c src/mat4.c -o /tmp/mat4.o
+	$(CC) $(CFLAGS) -c src/vec3.c -o /tmp/vec3.o
