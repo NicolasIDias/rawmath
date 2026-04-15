@@ -65,16 +65,19 @@ void mat4_transpose(mat4_t *restrict dest, const mat4_t *restrict a)
 
 void mat4_scale(mat4_t *dest, const mat4_t *a, float sx, float sy, float sz)
 {
-    if (dest != a) {
+    if (dest != a)
+    {
         *dest = *a;
     }
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++)
+    {
         dest->m[MAT_IDX(i, 0)] = a->m[MAT_IDX(i, 0)] * sx;
         dest->m[MAT_IDX(i, 1)] = a->m[MAT_IDX(i, 1)] * sy;
         dest->m[MAT_IDX(i, 2)] = a->m[MAT_IDX(i, 2)] * sz;
     }
 }
+
 void mat4_translate(mat4_t *dest, const mat4_t *a, float tx, float ty, float tz)
 {
     if (dest != a)
