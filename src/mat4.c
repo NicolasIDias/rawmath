@@ -77,14 +77,15 @@ void mat4_scale(mat4_t *dest, const mat4_t *a, float sx, float sy, float sz)
 
 void mat4_translate(mat4_t *dest, const mat4_t *a, float tx, float ty, float tz)
 {
-    mat4_t mat = {0};
-    mat4_identity(&mat);
+    if (dest != a)
+    {
+        *dest = *a;
+    }
 
-    mat.m[MAT_IDX(0, 3)] = tx;
-    mat.m[MAT_IDX(1, 3)] = ty;
-    mat.m[MAT_IDX(2, 3)] = tz;
-
-    mat4_mul(dest, a, &mat);
+    dest->m[MAT_IDX(0, 3)] = a->m[MAT_IDX(0, 0)] * tx + a->m[MAT_IDX(0, 1)] * ty + a->m[MAT_IDX(0, 2)] * tz + a->m[MAT_IDX(0, 3)];
+    dest->m[MAT_IDX(1, 3)] = a->m[MAT_IDX(1, 0)] * tx + a->m[MAT_IDX(1, 1)] * ty + a->m[MAT_IDX(1, 2)] * tz + a->m[MAT_IDX(1, 3)];
+    dest->m[MAT_IDX(2, 3)] = a->m[MAT_IDX(2, 0)] * tx + a->m[MAT_IDX(2, 1)] * ty + a->m[MAT_IDX(2, 2)] * tz + a->m[MAT_IDX(2, 3)];
+    dest->m[MAT_IDX(3, 3)] = a->m[MAT_IDX(3, 0)] * tx + a->m[MAT_IDX(3, 1)] * ty + a->m[MAT_IDX(3, 2)] * tz + a->m[MAT_IDX(3, 3)];
 }
 
 void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)
