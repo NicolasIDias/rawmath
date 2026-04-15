@@ -17,7 +17,7 @@ int main(void)
     center = vec3_create(0.0f, 0.0f, 0.0f);
     up = vec3_create(0.0f, 0.0f, 1.0f);
 
-    mat4_look_at(&result, eye, center, up);
+    assert(mat4_look_at(&result, eye, center, up) == 1);
 
     assert(fabsf(result.m[MAT_IDX(3, 0)]) < EPSILON);
     assert(fabsf(result.m[MAT_IDX(3, 1)]) < EPSILON);
@@ -28,7 +28,7 @@ int main(void)
     center = vec3_create(0.0f, 0.0f, 0.0f);
     up = vec3_create(0.0f, 1.0f, 0.0f);
 
-    mat4_look_at(&result, eye, center, up);
+    assert(mat4_look_at(&result, eye, center, up) == 1);
 
     assert(fabsf(result.m[MAT_IDX(3, 0)]) < EPSILON);
     assert(fabsf(result.m[MAT_IDX(3, 1)]) < EPSILON);
@@ -39,7 +39,7 @@ int main(void)
     center = vec3_create(0.0f, 0.0f, 0.0f);
     up = vec3_create(0.0f, 1.0f, 0.0f);
 
-    mat4_look_at(&result, eye, center, up);
+    assert(mat4_look_at(&result, eye, center, up) == 1);
 
     assert(fabsf(result.m[MAT_IDX(3, 0)]) < EPSILON);
     assert(fabsf(result.m[MAT_IDX(3, 1)]) < EPSILON);
@@ -59,7 +59,17 @@ int main(void)
     assert(fabsf(col0_len_sq - 1.0f) < EPSILON);
     assert(fabsf(col1_len_sq - 1.0f) < EPSILON);
     assert(fabsf(col2_len_sq - 1.0f) < EPSILON);
+    eye = vec3_create(0.0f, 0.0f, 0.0f);
+    center = vec3_create(0.0f, 0.0f, 0.0f);
+    up = vec3_create(0.0f, 1.0f, 0.0f);
 
+    assert(mat4_look_at(&result, eye, center, up) == 0);
+
+    eye = vec3_create(0.0f, 0.0f, 10.0f);
+    center = vec3_create(0.0f, 0.0f, 0.0f);
+    up = vec3_create(0.0f, 0.0f, 0.0f);
+
+    assert(mat4_look_at(&result, eye, center, up) == 0);
     printf("look_at_test passed!\n");
     return 0;
 }
