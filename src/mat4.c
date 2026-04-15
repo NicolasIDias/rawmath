@@ -18,27 +18,13 @@ void mat4_identity(mat4_t *dest)
 void mat4_mul(mat4_t *dest, const mat4_t *a, const mat4_t *b)
 {
     mat4_t temp;
-
-    temp.m[MAT_IDX(0, 0)] = (a->m[MAT_IDX(0, 0)] * b->m[MAT_IDX(0, 0)]) + (a->m[MAT_IDX(0, 1)] * b->m[MAT_IDX(1, 0)]) + (a->m[MAT_IDX(0, 2)] * b->m[MAT_IDX(2, 0)]) + (a->m[MAT_IDX(0, 3)] * b->m[MAT_IDX(3, 0)]);
-    temp.m[MAT_IDX(1, 0)] = (a->m[MAT_IDX(1, 0)] * b->m[MAT_IDX(0, 0)]) + (a->m[MAT_IDX(1, 1)] * b->m[MAT_IDX(1, 0)]) + (a->m[MAT_IDX(1, 2)] * b->m[MAT_IDX(2, 0)]) + (a->m[MAT_IDX(1, 3)] * b->m[MAT_IDX(3, 0)]);
-    temp.m[MAT_IDX(2, 0)] = (a->m[MAT_IDX(2, 0)] * b->m[MAT_IDX(0, 0)]) + (a->m[MAT_IDX(2, 1)] * b->m[MAT_IDX(1, 0)]) + (a->m[MAT_IDX(2, 2)] * b->m[MAT_IDX(2, 0)]) + (a->m[MAT_IDX(2, 3)] * b->m[MAT_IDX(3, 0)]);
-    temp.m[MAT_IDX(3, 0)] = (a->m[MAT_IDX(3, 0)] * b->m[MAT_IDX(0, 0)]) + (a->m[MAT_IDX(3, 1)] * b->m[MAT_IDX(1, 0)]) + (a->m[MAT_IDX(3, 2)] * b->m[MAT_IDX(2, 0)]) + (a->m[MAT_IDX(3, 3)] * b->m[MAT_IDX(3, 0)]);
-
-    temp.m[MAT_IDX(0, 1)] = (a->m[MAT_IDX(0, 0)] * b->m[MAT_IDX(0, 1)]) + (a->m[MAT_IDX(0, 1)] * b->m[MAT_IDX(1, 1)]) + (a->m[MAT_IDX(0, 2)] * b->m[MAT_IDX(2, 1)]) + (a->m[MAT_IDX(0, 3)] * b->m[MAT_IDX(3, 1)]);
-    temp.m[MAT_IDX(1, 1)] = (a->m[MAT_IDX(1, 0)] * b->m[MAT_IDX(0, 1)]) + (a->m[MAT_IDX(1, 1)] * b->m[MAT_IDX(1, 1)]) + (a->m[MAT_IDX(1, 2)] * b->m[MAT_IDX(2, 1)]) + (a->m[MAT_IDX(1, 3)] * b->m[MAT_IDX(3, 1)]);
-    temp.m[MAT_IDX(2, 1)] = (a->m[MAT_IDX(2, 0)] * b->m[MAT_IDX(0, 1)]) + (a->m[MAT_IDX(2, 1)] * b->m[MAT_IDX(1, 1)]) + (a->m[MAT_IDX(2, 2)] * b->m[MAT_IDX(2, 1)]) + (a->m[MAT_IDX(2, 3)] * b->m[MAT_IDX(3, 1)]);
-    temp.m[MAT_IDX(3, 1)] = (a->m[MAT_IDX(3, 0)] * b->m[MAT_IDX(0, 1)]) + (a->m[MAT_IDX(3, 1)] * b->m[MAT_IDX(1, 1)]) + (a->m[MAT_IDX(3, 2)] * b->m[MAT_IDX(2, 1)]) + (a->m[MAT_IDX(3, 3)] * b->m[MAT_IDX(3, 1)]);
-
-    temp.m[MAT_IDX(0, 2)] = (a->m[MAT_IDX(0, 0)] * b->m[MAT_IDX(0, 2)]) + (a->m[MAT_IDX(0, 1)] * b->m[MAT_IDX(1, 2)]) + (a->m[MAT_IDX(0, 2)] * b->m[MAT_IDX(2, 2)]) + (a->m[MAT_IDX(0, 3)] * b->m[MAT_IDX(3, 2)]);
-    temp.m[MAT_IDX(1, 2)] = (a->m[MAT_IDX(1, 0)] * b->m[MAT_IDX(0, 2)]) + (a->m[MAT_IDX(1, 1)] * b->m[MAT_IDX(1, 2)]) + (a->m[MAT_IDX(1, 2)] * b->m[MAT_IDX(2, 2)]) + (a->m[MAT_IDX(1, 3)] * b->m[MAT_IDX(3, 2)]);
-    temp.m[MAT_IDX(2, 2)] = (a->m[MAT_IDX(2, 0)] * b->m[MAT_IDX(0, 2)]) + (a->m[MAT_IDX(2, 1)] * b->m[MAT_IDX(1, 2)]) + (a->m[MAT_IDX(2, 2)] * b->m[MAT_IDX(2, 2)]) + (a->m[MAT_IDX(2, 3)] * b->m[MAT_IDX(3, 2)]);
-    temp.m[MAT_IDX(3, 2)] = (a->m[MAT_IDX(3, 0)] * b->m[MAT_IDX(0, 2)]) + (a->m[MAT_IDX(3, 1)] * b->m[MAT_IDX(1, 2)]) + (a->m[MAT_IDX(3, 2)] * b->m[MAT_IDX(2, 2)]) + (a->m[MAT_IDX(3, 3)] * b->m[MAT_IDX(3, 2)]);
-
-    temp.m[MAT_IDX(0, 3)] = (a->m[MAT_IDX(0, 0)] * b->m[MAT_IDX(0, 3)]) + (a->m[MAT_IDX(0, 1)] * b->m[MAT_IDX(1, 3)]) + (a->m[MAT_IDX(0, 2)] * b->m[MAT_IDX(2, 3)]) + (a->m[MAT_IDX(0, 3)] * b->m[MAT_IDX(3, 3)]);
-    temp.m[MAT_IDX(1, 3)] = (a->m[MAT_IDX(1, 0)] * b->m[MAT_IDX(0, 3)]) + (a->m[MAT_IDX(1, 1)] * b->m[MAT_IDX(1, 3)]) + (a->m[MAT_IDX(1, 2)] * b->m[MAT_IDX(2, 3)]) + (a->m[MAT_IDX(1, 3)] * b->m[MAT_IDX(3, 3)]);
-    temp.m[MAT_IDX(2, 3)] = (a->m[MAT_IDX(2, 0)] * b->m[MAT_IDX(0, 3)]) + (a->m[MAT_IDX(2, 1)] * b->m[MAT_IDX(1, 3)]) + (a->m[MAT_IDX(2, 2)] * b->m[MAT_IDX(2, 3)]) + (a->m[MAT_IDX(2, 3)] * b->m[MAT_IDX(3, 3)]);
-    temp.m[MAT_IDX(3, 3)] = (a->m[MAT_IDX(3, 0)] * b->m[MAT_IDX(0, 3)]) + (a->m[MAT_IDX(3, 1)] * b->m[MAT_IDX(1, 3)]) + (a->m[MAT_IDX(3, 2)] * b->m[MAT_IDX(2, 3)]) + (a->m[MAT_IDX(3, 3)] * b->m[MAT_IDX(3, 3)]);
-
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++) {
+            float sum = 0.0f;
+            for (int k = 0; k < 4; k++)
+                sum += a->m[MAT_IDX(i, k)] * b->m[MAT_IDX(k, j)];
+            temp.m[MAT_IDX(i, j)] = sum;
+        }
     *dest = temp;
 }
 
