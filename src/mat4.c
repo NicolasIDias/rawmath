@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <rawmath/common.h>
 #include <rawmath/mat4.h>
 #include <rawmath/vec3.h>
 #include <math.h>
@@ -117,6 +118,12 @@ void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)
 
 void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, float far)
 {
+    if (fov_y_rad <= 0.0f || fov_y_rad >= RM_PI || aspect <= 0.0f || near <= 0.0f || far <= near)
+    {
+        *dest = (mat4_t){0};
+        return;
+    }
+
     float t = tanf(fov_y_rad / 2);
     float top = near * t;
     float right = top * aspect;
@@ -141,11 +148,22 @@ void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, f
 void mat4_look_at(mat4_t *dest, vec3_t eye, vec3_t center, vec3_t up)
 {
     vec3_t F = vec3_sub(center, eye);
+    if (vec3_magnitude_sq(F) <= (VEC3_EPSILON * VEC3_EPSILON))
+    {
+        *dest = (mat4_t){0};
+        return;
+    }
+
     vec3_normalize(&F);
 
     vec3_t R = vec3_cross_product(F, up);
-    vec3_normalize(&R);
+    if (vec3_magnitude_sq(R) <= (VEC3_EPSILON * VEC3_EPSILON))
+    {
+        *dest = (mat4_t){0};
+        return;
+    }
 
+    vec3_normalize(&R);
     vec3_t U = vec3_cross_product(R, F);
 
     dest->m[MAT_IDX(0, 0)] = R.x;
