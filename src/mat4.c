@@ -19,7 +19,8 @@ void mat4_mul(mat4_t *dest, const mat4_t *a, const mat4_t *b)
 {
     mat4_t temp;
     for (int i = 0; i < 4; i++)
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 4; j++)
+        {
             float sum = 0.0f;
             for (int k = 0; k < 4; k++)
                 sum += a->m[MAT_IDX(i, k)] * b->m[MAT_IDX(k, j)];
@@ -198,7 +199,7 @@ void mat4_print(const mat4_t *mat)
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
-            printf("%8.2f", (double) mat->m[MAT_IDX(i, j)]);
+            printf("%8.2f", (double)mat->m[MAT_IDX(i, j)]);
         printf("\n");
     }
     printf("\n");
