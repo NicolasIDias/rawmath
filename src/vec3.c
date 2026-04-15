@@ -62,13 +62,14 @@ void vec3_negate(vec3_t *v)
     v->z *= -1;
 }
 
-void vec3_reflect(vec3_t *r, const vec3_t a, vec3_t b)
+void vec3_reflect(vec3_t *r, const vec3_t a, const vec3_t b)
 {
-    vec3_normalize(&b);
-    float p = 2.f * vec3_dot_product(a, b);
-    r->x = a.x - p * b.x;
-    r->y = a.y - p * b.y;
-    r->z = a.z - p * b.z;
+    vec3_t normal = b;
+    vec3_normalize(&normal);
+    float p = 2.f * vec3_dot_product(a, normal);
+    r->x = a.x - p * normal.x;
+    r->y = a.y - p * normal.y;
+    r->z = a.z - p * normal.z;
 }
 float vec3_triple_product(const vec3_t a, const vec3_t b, const vec3_t c)
 {
