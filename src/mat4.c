@@ -110,12 +110,12 @@ void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)
     mat4_mul(dest, a, &mat);
 }
 
-void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, float far)
+int mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, float far)
 {
     if (fov_y_rad <= 0.0f || fov_y_rad >= RM_PI || aspect <= 0.0f || near <= 0.0f || far <= near)
     {
         *dest = (mat4_t){0};
-        return;
+        return 0;
     }
 
     float t = tanf(fov_y_rad / 2);
@@ -137,15 +137,16 @@ void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, f
     mat.m[MAT_IDX(3, 2)] = -1.0f;
 
     *dest = mat;
+    return 1;
 }
 
-void mat4_look_at(mat4_t *dest, vec3_t eye, vec3_t center, vec3_t up)
+int mat4_look_at(mat4_t *dest, vec3_t eye, vec3_t center, vec3_t up)
 {
     vec3_t F = vec3_sub(center, eye);
     if (vec3_magnitude_sq(F) <= (VEC3_EPSILON * VEC3_EPSILON))
     {
         *dest = (mat4_t){0};
-        return;
+        return 0;
     }
 
     vec3_normalize(&F);
@@ -154,7 +155,7 @@ void mat4_look_at(mat4_t *dest, vec3_t eye, vec3_t center, vec3_t up)
     if (vec3_magnitude_sq(R) <= (VEC3_EPSILON * VEC3_EPSILON))
     {
         *dest = (mat4_t){0};
-        return;
+        return 0;
     }
 
     vec3_normalize(&R);
@@ -176,6 +177,7 @@ void mat4_look_at(mat4_t *dest, vec3_t eye, vec3_t center, vec3_t up)
     dest->m[MAT_IDX(3, 1)] = 0;
     dest->m[MAT_IDX(3, 2)] = 0;
     dest->m[MAT_IDX(3, 3)] = 1.0f;
+    return 1;
 }
 
 void mat4_print(const mat4_t *mat)
