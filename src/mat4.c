@@ -149,7 +149,7 @@ void mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, f
     float top = near * t;
     float right = top * aspect;
 
-    float far_sub_near = 1 / (far - near);
+    float far_sub_near = 1.0f / (far - near);
 
     float A_x = near / right;
     float A_y = near / top;

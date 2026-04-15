@@ -1,0 +1,9 @@
+#define RM_PI 3.14159265358979323846f
+#define RM_TWO_PI 6.28318530717958647692f
+
+#define RM_DEG_TO_RAD (RM_PI / 180.0f)
+#define RM_RAD_TO_DEG (180.0f / RM_PI)
+
+#define VEC3_EPSILON 1e-5f
+#define VEC2_EPSILON 1e-5f
+#define MAT4_EPSILON 1e-5f
