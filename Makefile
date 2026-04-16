@@ -4,7 +4,7 @@ CFLAGS  := -Wall -Wextra -Werror -pedantic -std=c99 -I./include \
            -Wmissing-prototypes -Wnull-dereference                \
            -Wdouble-promotion -Wundef -Wwrite-strings             \
            -Wfloat-equal -Wcast-qual -Wpointer-arith              \
-           -fstack-protector-strong -fno-common
+           -fstack-protector-strong -fno-common -ffast-math
 LDFLAGS := -lm
 VALGRIND := valgrind --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --error-exitcode=1
 
