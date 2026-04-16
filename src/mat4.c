@@ -6,16 +6,13 @@
 
 void mat4_identity(mat4_t *dest)
 {
-    mat4_t mat = {0};
+    *dest = (mat4_t){0};
 
-    mat.m[MAT_IDX(0, 0)] = 1.0f;
-    mat.m[MAT_IDX(1, 1)] = 1.0f;
-    mat.m[MAT_IDX(2, 2)] = 1.0f;
-    mat.m[MAT_IDX(3, 3)] = 1.0f;
-
-    *dest = mat;
+    dest->m[MAT_IDX(0, 0)] = 1.0f;
+    dest->m[MAT_IDX(1, 1)] = 1.0f;
+    dest->m[MAT_IDX(2, 2)] = 1.0f;
+    dest->m[MAT_IDX(3, 3)] = 1.0f;
 }
-
 void mat4_mul(mat4_t *dest, const mat4_t *a, const mat4_t *b)
 {
     mat4_t temp;
