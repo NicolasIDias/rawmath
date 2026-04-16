@@ -114,7 +114,6 @@ int mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, fl
 {
     if (fov_y_rad <= 0.0f || fov_y_rad >= RM_PI || aspect <= 0.0f || near <= 0.0f || far <= near)
     {
-        *dest = (mat4_t){0};
         return 0;
     }
 
@@ -142,11 +141,10 @@ int mat4_perspective(mat4_t *dest, float fov_y_rad, float aspect, float near, fl
 
 int mat4_look_at(mat4_t *dest, vec3_t eye, vec3_t center, vec3_t up)
 {
-    vec3_t F = vec3_sub(center, eye);
+vec3_t F = vec3_sub(center, eye);
     if (vec3_magnitude_sq(F) <= (VEC3_EPSILON * VEC3_EPSILON))
     {
-        *dest = (mat4_t){0};
-        return 0;
+        return 0; 
     }
 
     vec3_normalize(&F);
@@ -154,8 +152,7 @@ int mat4_look_at(mat4_t *dest, vec3_t eye, vec3_t center, vec3_t up)
     vec3_t R = vec3_cross_product(F, up);
     if (vec3_magnitude_sq(R) <= (VEC3_EPSILON * VEC3_EPSILON))
     {
-        *dest = (mat4_t){0};
-        return 0;
+        return 0; 
     }
 
     vec3_normalize(&R);
