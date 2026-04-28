@@ -1,7 +1,7 @@
-#include <rawmath/vec3.h>
-#include <stdio.h>
 #include <assert.h>
 #include <math.h>
+#include <rawmath/vec3.h>
+#include <stdio.h>
 
 int main(void)
 {

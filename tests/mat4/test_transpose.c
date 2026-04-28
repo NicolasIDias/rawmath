@@ -1,7 +1,7 @@
-#include <rawmath/mat4.h>
-#include <stdio.h>
 #include <assert.h>
 #include <math.h>
+#include <rawmath/mat4.h>
+#include <stdio.h>
 
 int main(void)
 {

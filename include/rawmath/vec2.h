@@ -7,7 +7,6 @@
 #define VEC2_LEFT (vec2_t){-1.0f, 0.0f}
 #define VEC2_RIGHT (vec2_t){1.0f, 0.0f}
 
-
 typedef struct vec2
 {
 

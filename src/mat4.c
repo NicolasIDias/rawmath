@@ -1,8 +1,8 @@
-#include <stdio.h>
+#include <math.h>
 #include <rawmath/common.h>
 #include <rawmath/mat4.h>
 #include <rawmath/vec3.h>
-#include <math.h>
+#include <stdio.h>
 
 void mat4_identity(mat4_t *dest)
 {
@@ -72,10 +72,14 @@ void mat4_translate(mat4_t *dest, const mat4_t *a, float tx, float ty, float tz)
         *dest = *a;
     }
 
-    dest->m[MAT_IDX(0, 3)] = a->m[MAT_IDX(0, 0)] * tx + a->m[MAT_IDX(0, 1)] * ty + a->m[MAT_IDX(0, 2)] * tz + a->m[MAT_IDX(0, 3)];
-    dest->m[MAT_IDX(1, 3)] = a->m[MAT_IDX(1, 0)] * tx + a->m[MAT_IDX(1, 1)] * ty + a->m[MAT_IDX(1, 2)] * tz + a->m[MAT_IDX(1, 3)];
-    dest->m[MAT_IDX(2, 3)] = a->m[MAT_IDX(2, 0)] * tx + a->m[MAT_IDX(2, 1)] * ty + a->m[MAT_IDX(2, 2)] * tz + a->m[MAT_IDX(2, 3)];
-    dest->m[MAT_IDX(3, 3)] = a->m[MAT_IDX(3, 0)] * tx + a->m[MAT_IDX(3, 1)] * ty + a->m[MAT_IDX(3, 2)] * tz + a->m[MAT_IDX(3, 3)];
+    dest->m[MAT_IDX(0, 3)] =
+        a->m[MAT_IDX(0, 0)] * tx + a->m[MAT_IDX(0, 1)] * ty + a->m[MAT_IDX(0, 2)] * tz + a->m[MAT_IDX(0, 3)];
+    dest->m[MAT_IDX(1, 3)] =
+        a->m[MAT_IDX(1, 0)] * tx + a->m[MAT_IDX(1, 1)] * ty + a->m[MAT_IDX(1, 2)] * tz + a->m[MAT_IDX(1, 3)];
+    dest->m[MAT_IDX(2, 3)] =
+        a->m[MAT_IDX(2, 0)] * tx + a->m[MAT_IDX(2, 1)] * ty + a->m[MAT_IDX(2, 2)] * tz + a->m[MAT_IDX(2, 3)];
+    dest->m[MAT_IDX(3, 3)] =
+        a->m[MAT_IDX(3, 0)] * tx + a->m[MAT_IDX(3, 1)] * ty + a->m[MAT_IDX(3, 2)] * tz + a->m[MAT_IDX(3, 3)];
 }
 
 void mat4_rotate(mat4_t *dest, const mat4_t *a, vec3_t axis, float angle_rad)

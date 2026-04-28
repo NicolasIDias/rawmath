@@ -1,8 +1,8 @@
+#include <assert.h>
+#include <math.h>
 #include <rawmath/mat4.h>
 #include <rawmath/vec3.h>
 #include <stdio.h>
-#include <assert.h>
-#include <math.h>
 
 #ifndef EPSILON
 #define EPSILON 1e-5f

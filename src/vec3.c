@@ -1,7 +1,7 @@
-#include <rawmath/vec3.h>
-#include <rawmath/common.h>
-#include <stdio.h>
 #include <math.h>
+#include <rawmath/common.h>
+#include <rawmath/vec3.h>
+#include <stdio.h>
 
 vec3_t vec3_create(float x, float y, float z)
 {
@@ -20,8 +20,7 @@ vec3_t vec3_sub(vec3_t a, vec3_t b)
 
 vec3_t vec3_mul(const vec3_t a, const vec3_t b)
 {
-    return vec3_create(
-        a.x * b.x, a.y * b.y, a.z * b.z);
+    return vec3_create(a.x * b.x, a.y * b.y, a.z * b.z);
 }
 
 float vec3_dot_product(const vec3_t u, const vec3_t v)
@@ -47,10 +46,7 @@ void vec3_scale(float scalar, vec3_t *v)
 
 int vec3_equals(vec3_t a, vec3_t b)
 {
-    return (
-               (fabsf(a.x - b.x) < VEC3_EPSILON) &&
-               (fabsf(a.y - b.y) < VEC3_EPSILON) &&
-               (fabsf(a.z - b.z) < VEC3_EPSILON))
+    return ((fabsf(a.x - b.x) < VEC3_EPSILON) && (fabsf(a.y - b.y) < VEC3_EPSILON) && (fabsf(a.z - b.z) < VEC3_EPSILON))
                ? 1
                : 0;
 }
@@ -93,10 +89,7 @@ float vec3_magnitude_sq(vec3_t v)
 
 vec3_t vec3_lerp(vec3_t a, vec3_t b, float t)
 {
-    return vec3_create(
-        a.x + (b.x - a.x) * t,
-        a.y + (b.y - a.y) * t,
-        a.z + (b.z - a.z) * t);
+    return vec3_create(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t, a.z + (b.z - a.z) * t);
 }
 
 void vec3_normalize(vec3_t *v)

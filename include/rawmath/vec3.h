@@ -1,6 +1,5 @@
 #pragma once
 
-
 typedef struct vec3
 {
     float x;

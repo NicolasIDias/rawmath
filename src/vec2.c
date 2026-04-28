@@ -1,12 +1,11 @@
-#include <rawmath/vec2.h>
-#include <rawmath/common.h>
 #include <math.h>
+#include <rawmath/common.h>
+#include <rawmath/vec2.h>
 #include <stdio.h>
 
 vec2_t vec2_create(float x, float y)
 {
-    return (vec2_t){
-        x, y};
+    return (vec2_t){x, y};
 }
 
 vec2_t vec2_from_scalar(float s)
@@ -59,11 +58,7 @@ float vec2_magnitude_sq(vec2_t a)
 
 int vec2_equals(vec2_t a, vec2_t b)
 {
-    return (
-               (fabsf(a.x - b.x) < VEC2_EPSILON) &&
-               (fabsf(a.y - b.y) < VEC2_EPSILON))
-               ? 1
-               : 0;
+    return ((fabsf(a.x - b.x) < VEC2_EPSILON) && (fabsf(a.y - b.y) < VEC2_EPSILON)) ? 1 : 0;
 }
 
 void vec2_negate(vec2_t *v)
@@ -84,9 +79,7 @@ void vec2_reflect(vec2_t *r, const vec2_t a, const vec2_t b)
 
 vec2_t vec2_lerp(vec2_t a, vec2_t b, float t)
 {
-    return vec2_create(
-        a.x + (b.x - a.x) * t,
-        a.y + (b.y - a.y) * t);
+    return vec2_create(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
 }
 
 void vec2_normalize(vec2_t *v)
